@@ -6,88 +6,92 @@ export class MyElement extends LitElement {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-.body{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.header{
-    display: flex;
-    height: 5vh;
-    justify-content: center;
-    align-items: center;
-}
-.UserOptions{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-.songName{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.mediaOptions{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding-left: 3vh;
-    padding-right: 3vh;
-    height: 25vh;
-    justify-content: space-around;
-}
+  }
+  .body{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+  .header{
+      display: flex;
+      height: 5vh;
+      justify-content: center;
+      align-items: center;
+  }
+  .UserOptions{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+  }
+  .songName{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+  .mediaOptions{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding-left: 3vh;
+      padding-right: 3vh;
+      height: 25vh;
+      justify-content: space-around;
+  }
+  
+  .musicTime{
+      display: flex;
+      justify-content: space-between;
 
-.musicTime{
-    display: flex;
-    justify-content: space-between;
+  }
+  .progressMusic{
+      display: flex;
+      justify-content: center;
+  }
+  .progressMusic progress{
+      width: 100%;
+      height: 0.5vh;
+      background-color: #ddd;
+  }
+  progress::-webkit-progress-value{
+      background-color: #27AE60;
+  }
+  progress::-webkit-progress-bar {
 
-}
-.progressMusic{
+      background-color: #ececec;
+  }
+  .mediaControl{
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+  }
+  .volumeControl{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .volumeControl progress{
+      width: 50%;
+      height: 0.3vh;
+      background-color: #ddd;
+  }
+  .deviceOutput{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      justify-content: center;
+  }
+  .deviceOutput div{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      background: #6fcf9752;
+      width: 18vh;
+      border-radius: 1vh;
+  }
+  .SongImage{
     display: flex;
-    justify-content: center;
-}
-.progressMusic progress{
-    width: 100%;
-    height: 0.5vh;
-    background-color: #ddd;
-}
-progress::-webkit-progress-value{
-    background-color: #27AE60;
-}
-progress::-webkit-progress-bar {
-
-    background-color: #ececec;
-}
-.mediaControl{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-.volumeControl{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.volumeControl progress{
-    width: 50%;
-    height: 0.3vh;
-    background-color: #ddd;
-}
-.deviceOutput{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    justify-content: center;
-}
-.deviceOutput div{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    background: #6fcf9752;
-    width: 18vh;
-    border-radius: 1vh;
-}
+    justify-content: center
+  }
   `;
   render() {
     return html`
@@ -98,7 +102,7 @@ progress::-webkit-progress-bar {
       </div>
     </header>
     <div class="SongInfo">
-      <div>
+      <div class="SongImage">
         <img src="src/storage/img/image 20.png" alt="">
       </div>
       <div class="UserOptions">
@@ -146,7 +150,6 @@ progress::-webkit-progress-bar {
         </div>
       </div>
     </div>
-   
   </body>
     `;
   }
