@@ -1,157 +1,150 @@
-import {LitElement, css, html} from 'lit';
+import { LitElement, html, css } from "lit";
+
+// Parte menu ajustada 
+import { MyBarraIzquierda } from "./my-barraIzquierda";
+customElements.define('my-barra-izquierda', MyBarraIzquierda);
+
+import { myTrack } from "./my-track";
+customElements.define('my-track', myTrack);
+
+import { Reproductor } from "./reproductor";
+customElements.define('my-reproductor', Reproductor);
+
+import { TrackList } from "./my-trackList";
+customElements.define('my-trcklist', TrackList);
 
 export class MyElement extends LitElement {
   static styles = css`
+    
   *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+      margin: none;
+      padding: none;
+      box-sizing: border-box;
+
   }
-  .body{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+
+  .main{
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 80px 1fr 1.5fr 1fr;
+      grid-template-rows: 1fr;
   }
-  .header{
-      display: flex;
-      height: 5vh;
-      justify-content: center;
-      align-items: center;
+  .main__aside{
+      height: 100vh;
+      background: #dfdfdf;
+      padding: 10px;
+      display: grid;
+      grid-template-rows: 130px 1fr 130px
   }
-  .UserOptions{
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
+  .aside__profile{
+      border-bottom: 1px solid gray
   }
-  .songName{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+  .aside__buttons{
+      
   }
-  .mediaOptions{
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      padding-left: 3vh;
-      padding-right: 3vh;
-      height: 25vh;
-      justify-content: space-around;
+  .aside__exit{
+      
   }
-  
-  .musicTime{
+  .main__section1{
+      height: 100vh;
+      background: white;
+      box-shadow: 9px 0 20px -20px;
+  }
+
+  .main__section1 h1{
+      font-size: 3em;
+      margin-left: 5%
+  }
+
+  .top__chart__title{
       display: flex;
       justify-content: space-between;
+      padding: 0 5%;
+  }
 
+  .youmaylike h2{
+      margin: 15px;
   }
-  .progressMusic{
-      display: flex;
-      justify-content: center;
-  }
-  .progressMusic progress{
-      width: 100%;
-      height: 0.5vh;
-      background-color: #ddd;
-  }
-  progress::-webkit-progress-value{
-      background-color: #27AE60;
-  }
-  progress::-webkit-progress-bar {
 
-      background-color: #ececec;
+  .main__section2{
+      height: 100vh;
+      z-index: -1
   }
-  .mediaControl{
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
+
+  .main__section3{
+      height: 100vh;
+      overflow-y: scroll;
+      background: white;
+      box-shadow: 10px 10px 20px;
   }
-  .volumeControl{
-      display: flex;
-      justify-content: center;
-      align-items: center;
+
+  .trcklist {
+      overflow-y: scroll;
   }
-  .volumeControl progress{
-      width: 50%;
-      height: 0.3vh;
-      background-color: #ddd;
+
+  .tracklistupper {
+      margin-left: 20px;
   }
-  .deviceOutput{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      justify-content: center;
+
+
+  @media (max-width: 849px){
+      .main{
+          grid-template-columns: 1fr;
+          grid-template-rows: 1fr 80px;
+      }
+      .aside__profile{
+          display: none
+      }
+      .aside__exit{
+          display: none
+      }
+      .main__section1{
+          display: none
+      }
+      .main__section2{
+          display: none
+      }
   }
-  .deviceOutput div{
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      background: #6fcf9752;
-      width: 18vh;
-      border-radius: 1vh;
+  `
+
+  render(){
+      return html`
+      <main class="main">
+          <aside class="main__aside">
+          <my-barra-izquierda></my-barra-izquierda>
+          </aside>
+
+          <section class="main__section1">
+              <h1>Discover<br>New music</h1>
+                  <div class="top__chart__title">
+                      <h2>Top-chart</h2><h2>Week</h2>
+                  </div>
+
+          <new-music></new-music>
+
+              <div class="youmaylike">
+                  <h2>You may Like</h2>
+              </div>
+
+          <my-track></my-track>
+          
+          </section>
+          <section class="main__section2">
+          <my-reproductor><my-reproductor>
+          
+          </section>
+          <section class="main__section3">
+          <div class="tracklistupper"> 
+          <h1>Track List</h1>
+          <h2>Playing Next</h2>
+          <div>
+
+          <my-trcklist class="trcklist"></my-trcklist>
+          </section>
+      </main>
+      `
   }
-  .SongImage{
-    display: flex;
-    justify-content: center
-  }
-  `;
-  render() {
-    return html`
-    <body class="body">
-    <header class="header">
-      <div>
-        <h3>Now Playing</h3>
-      </div>
-    </header>
-    <div class="SongInfo">
-      <div class="SongImage">
-        <img src="src/storage/img/image 20.png" alt="">
-      </div>
-      <div class="UserOptions">
-        <div>
-          <box-icon name='plus' color='#9bd8b5'></box-icon>
-        </div>
-        <div class="songName">
-          <h3>
-            Money Machine
-          </h3>
-          <h6>
-            1000 Gecks
-          </h6>
-        </div>
-        <div>
-          <box-icon name='heart' color='#9bd8b5' ></box-icon>
-        </div>
-      </div>
-    </div>
-    <div class="mediaOptions">
-      <div class="musicTimeline">
-        <div class="musicTime">
-          <p>2:14</p>
-          <p>-1:15</p>
-        </div>
-        <div class="progressMusic">
-          <progress class="progress" value="214" max="329"></progress>
-        </div>
-        </div>
-      <div class="mediaControl">
-        <box-icon name='shuffle' flip='vertical' color='#828282' ></box-icon>
-        <box-icon name='rewind' flip='vertical' color='#27ae60' size='lg' ></box-icon>
-        <box-icon name='play-circle' color='#27ae60' size='lg'></box-icon>
-        <box-icon name='rewind' rotate='180' color='#27ae60' size='lg'></box-icon>
-        <box-icon name='repeat' color='#828282'></box-icon>
-      </div>
-      <div class="volumeControl">
-        <box-icon name='volume-low' color='#828282'></box-icon>
-        <progress class="progress" value="214" max="329"></progress>
-        <box-icon name='volume-full' color='#828282' ></box-icon>
-      </div>
-      <div class="deviceOutput">
-        <div><box-icon name='headphone' color='#828282' ></box-icon>
-          <p>Airpods Pro (Dave)</p>
-        </div>
-      </div>
-    </div>
-  </body>
-    `;
-  }
+
 }
+
 customElements.define('my-element', MyElement);

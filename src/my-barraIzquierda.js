@@ -9,7 +9,7 @@ import bookLogo from "../public/Frame 20.svg"
 import gearLogo from "../public/Frame 22.svg"
 import exitLogo from "../public/Frame 26.svg"
 
-export class MyLeftBar extends LitElement {
+export class MyBarraIzquierda extends LitElement {
   
     constructor() {
       super();
